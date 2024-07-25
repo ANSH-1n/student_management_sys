@@ -15,8 +15,22 @@ import time
 
 st.set_page_config(layout = 'wide')
 
+
+client = MongoClient("mongodb://admin:admin@localhost:27017?authSource=admin")
 client = MongoClient("mongodb://localhost:27017/")
 db = client["anantnew"]
+
+
+st.wite("DB username:",st.secrets["DB_USERNAME "])
+st.wite("DB username:",st.secrets["DB_PASSWORD"])
+st.wite("my cool secrets",st.secrets["MY_COOL_SECRETS"]["THINGS_I_LIKE"])
+
+st.write(
+    "Has environment variable been set:",
+    os.environ["DB_USERNAME "] == st.secrets["DB_USERNAME "],
+)
+
+
 
 def hash_password(password):
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
